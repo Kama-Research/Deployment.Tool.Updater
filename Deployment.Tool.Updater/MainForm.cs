@@ -51,7 +51,7 @@ namespace Deployment.Tool.Updater
 
         private void btnStartAnalogy_Click(object sender, EventArgs e)
         {
-            string filename = "Analogy.EXE";
+            string filename = "Kalpa.Deployment.exe";
             if (File.Exists(filename))
             {
                 Process.Start(filename);

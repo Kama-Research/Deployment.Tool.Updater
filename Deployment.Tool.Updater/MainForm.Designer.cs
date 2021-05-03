@@ -64,7 +64,7 @@
             this.btnStartAnalogy.Name = "btnStartAnalogy";
             this.btnStartAnalogy.Size = new System.Drawing.Size(130, 50);
             this.btnStartAnalogy.TabIndex = 3;
-            this.btnStartAnalogy.Text = "Start Analogy";
+            this.btnStartAnalogy.Text = "Start Again";
             this.btnStartAnalogy.UseVisualStyleBackColor = true;
             this.btnStartAnalogy.Click += new System.EventHandler(this.btnStartAnalogy_Click);
             // 
