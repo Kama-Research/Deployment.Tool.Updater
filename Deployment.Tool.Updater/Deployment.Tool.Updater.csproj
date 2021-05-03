@@ -17,7 +17,7 @@
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
-		<ApplicationIcon>AnalogyIconDark.ico</ApplicationIcon>
+		<ApplicationIcon>Kama.Deployment.ico</ApplicationIcon>
 		<PackageIcon></PackageIcon>
 
 	</PropertyGroup>
