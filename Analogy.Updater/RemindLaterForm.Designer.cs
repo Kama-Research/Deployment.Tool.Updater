@@ -1,4 +1,4 @@
-﻿namespace Analogy.Updater
+﻿namespace Deployment.Tool.Updater
 {
     partial class RemindLaterForm
     {
@@ -50,7 +50,7 @@
             // pictureBoxIcon
             // 
             resources.ApplyResources(this.pictureBoxIcon, "pictureBoxIcon");
-            this.pictureBoxIcon.Image = global::Analogy.Updater.Properties.Resources.clock_go_32;
+            this.pictureBoxIcon.Image = global::Deployment.Tool.Updater.Properties.Resources.clock_go_32;
             this.pictureBoxIcon.Name = "pictureBoxIcon";
             this.tableLayoutPanel.SetRowSpan(this.pictureBoxIcon, 2);
             this.pictureBoxIcon.TabStop = false;
@@ -96,7 +96,7 @@
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.buttonOK, "buttonOK");
-            this.buttonOK.Image = global::Analogy.Updater.Properties.Resources.clock_play;
+            this.buttonOK.Image = global::Deployment.Tool.Updater.Properties.Resources.clock_play;
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.ButtonOkClick);

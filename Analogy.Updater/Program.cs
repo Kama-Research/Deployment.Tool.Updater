@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Analogy.Updater
+namespace Deployment.Tool.Updater
 {
     static class Program
     {

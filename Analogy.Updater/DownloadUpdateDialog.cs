@@ -1,5 +1,4 @@
-﻿using Analogy.Updater.Properties;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -9,8 +8,9 @@ using System.Net;
 using System.Net.Cache;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using Deployment.Tool.Updater.Properties;
 
-namespace Analogy.Updater
+namespace Deployment.Tool.Updater
 {
     internal partial class DownloadUpdateDialog : Form
     {

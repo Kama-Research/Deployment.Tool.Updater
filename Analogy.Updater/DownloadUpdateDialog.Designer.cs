@@ -1,4 +1,4 @@
-﻿namespace Analogy.Updater
+﻿namespace Deployment.Tool.Updater
 {
     partial class DownloadUpdateDialog
     {

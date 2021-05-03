@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Analogy.Updater
+namespace Deployment.Tool.Updater
 {
     internal partial class RemindLaterForm : Form
     {
