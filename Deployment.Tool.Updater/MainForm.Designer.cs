@@ -89,7 +89,6 @@
             this.Controls.Add(this.btnStartAnalogy);
             this.Controls.Add(this.lblTitleValue);
             this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Kama Updater";

@@ -421,7 +421,7 @@ namespace Deployment.Tool.Updater
         /// </summary>
         public static bool DownloadUpdate(Form parent)
         {
-            var downloadDialog = new DownloadUpdateDialog(DownloadURL);
+            var downloadDialog = new DownloadUpdateForm(DownloadURL);
 
             try
             {

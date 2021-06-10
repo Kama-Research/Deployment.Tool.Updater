@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Deployment.Tool.Updater
@@ -12,7 +13,10 @@ namespace Deployment.Tool.Updater
         [STAThread]
         static void Main(string[] args)
         {
-            //Debugger.Launch();
+            if (File.Exists(@"D:\debugger.cfg"))
+            {
+                Debugger.Launch();
+            }
 #if NETCOREAPP || NET
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
 #endif

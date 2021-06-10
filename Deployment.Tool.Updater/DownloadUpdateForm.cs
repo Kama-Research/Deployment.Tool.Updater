@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -7,12 +10,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Deployment.Tool.Updater.Properties;
 
 namespace Deployment.Tool.Updater
 {
-    internal partial class DownloadUpdateDialog : Form
+    public partial class DownloadUpdateForm : Form
     {
         private readonly string _downloadURL;
 
@@ -22,15 +27,15 @@ namespace Deployment.Tool.Updater
 
         private DateTime _startedAt;
 
-        public DownloadUpdateDialog(string downloadURL)
+        public DownloadUpdateForm(string downloadURL)
         {
             InitializeComponent();
-
             _downloadURL = downloadURL;
         }
 
-        private void DownloadUpdateDialogLoad(object sender, EventArgs e)
+        private void DownloadUpdateForm_Load(object sender, EventArgs e)
         {
+
             _webClient = new MyWebClient
             {
                 CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore)
@@ -158,13 +163,36 @@ namespace Deployment.Tool.Updater
             if (extension.Equals(".zip", StringComparison.OrdinalIgnoreCase))
             {
                 string installerPath = Path.Combine(AutoUpdater.DownloadPath);
+                CleanInstallerFolder(installerPath);
                 UnzipZipFileIntoTempFolder(tempPath, installerPath);
             }
             File.Delete(tempPath);
             Close();
         }
+
+        private void CleanInstallerFolder(string installerPath)
+        {
+            var files = Directory.GetFiles(installerPath);
+            foreach (string file in files)
+            {
+                if (file.EndsWith("zip", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    continue;
+                }
+                try
+                {
+                    File.Delete(file);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+
+        }
         private void UnzipZipFileIntoTempFolder(string zipPath, string extractPath)
         {
+
 
             using (FileStream zipToOpen = new FileStream(zipPath, FileMode.Open))
             {
@@ -175,18 +203,27 @@ namespace Deployment.Tool.Updater
                     var entries = archive.Entries.Where(entry => !entry.FullName.EndsWith("/"));
                     foreach (ZipArchiveEntry entry in entries)
                     {
-                        string target = Path.Combine(extractPath, entry.FullName);
-                        bool skipFile = AutoUpdater.IsSkipFile(target);
-                        if (!AutoUpdater.ForceOverrideFiles && skipFile)
+                        try
                         {
-                            continue;
+                            string target = Path.Combine(extractPath, entry.FullName);
+                            //bool skipFile = AutoUpdater.IsSkipFile(target);
+                            //if (!AutoUpdater.ForceOverrideFiles && skipFile)
+                            //{
+                            //    continue;
+                            //}
+                            string directory = Path.GetDirectoryName(target);
+                            if (!Directory.Exists(directory))
+                            {
+                                Directory.CreateDirectory(directory);
+                            }
+                            entry.ExtractToFile(target, true);
                         }
-                        string directory = Path.GetDirectoryName(target);
-                        if (!Directory.Exists(directory))
+                        catch (Exception e)
                         {
-                            Directory.CreateDirectory(directory);
+                            Console.WriteLine(e);
                         }
-                        entry.ExtractToFile(target, true);
+
+
                     }
                 }
             }
